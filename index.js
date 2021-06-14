@@ -32,6 +32,39 @@ const managerQuestions = [
 // Employee prompt questions
 const employeeQuestions = [
     {
-        
+        type: 'list',
+        message: "What is the employee's role?",
+        name: 'role',
+        choice: ['Engineer, Intern'],
+    },
+    {
+        type: 'input',
+        message: 'What is the name of the employee?',
+        name: 'name',
+    },
+    {
+        type: 'input',
+        message: "What is the employee's ID?",
+        name: 'id',
+    },
+    {
+        type: 'input',
+        message: "What is the employee's email?",
+        name: 'email'
     }
+    {
+        type: 'input',
+        message: "What is the engineer's github username?",
+        name: 'gitHub'
+    },
+    {
+        type: 'input',
+        message: "What is the name of the intern's school?",
+        name: 'school'
+    },
+    {
+        type: 'confirm',
+        message: "Would you like to add another employee to the team?",
+        name: 'confirm',
+    },
 ]
