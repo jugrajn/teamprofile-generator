@@ -4,6 +4,7 @@ const fs = require('fs');
 const Manager = require('./lib/manager.js');
 const Engineer = require('./lib/engineer.js');
 const Intern = require('./lib/Intern');
+const { inherits } = require('util');
 
 // Manager prompt questions
 const managerQuestions = [
@@ -51,16 +52,18 @@ const employeeQuestions = [
         type: 'input',
         message: "What is the employee's email?",
         name: 'email'
-    }
+    },
     {
         type: 'input',
         message: "What is the engineer's github username?",
-        name: 'gitHub'
+        name: 'gitHub',
+        when: role === 'engineer',
     },
     {
         type: 'input',
         message: "What is the name of the intern's school?",
-        name: 'school'
+        name: 'school',
+        when: role === 'intern',
     },
     {
         type: 'confirm',
@@ -68,3 +71,17 @@ const employeeQuestions = [
         name: 'confirm',
     },
 ]
+
+// Class to intialize promps
+// function init() {
+//     inquirer.prompt(managerQuestions)
+//             .then((response) => {
+            
+//             });
+    
+//     inquirer.prompt(employeeQuestions)
+//             .then((response2) => {
+
+//             });
+
+// }
