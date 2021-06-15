@@ -37,7 +37,7 @@ const employeeQuestions = [
         type: 'list',
         message: "What is the employee's role?",
         name: 'role',
-        choice: ['Engineer, Intern'],
+        choices: ['Engineer', 'Intern'],
     },
     {
         type: 'input',
@@ -101,3 +101,5 @@ function init() {
                 teamData.push(theEmployee);
             });
 }
+
+init();
