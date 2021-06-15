@@ -73,10 +73,10 @@ const employeeQuestions = [
     },
 ]
 
-// Class to intialize promps
+// Retrieve Input values for Manager Questions into empty array
 function init() {
-    inquirer.prompt(managerQuestions)
-    // Retrieve Input values for Manager Questions into empty array
+  return  inquirer.prompt(managerQuestions)
+
             .then((managerData) => {
             const {name, id, email, officeNumber } = managerData;
             const manager = new Manager (name, id, email, officeNumber);
@@ -85,8 +85,12 @@ function init() {
             console.log(manager);
             });
     
-     // Retrive Input values for Employee questions into empty array       
-    inquirer.prompt(employeeQuestions)
+    addEmployee();
+}   
+
+     // Retrive Input values for Employee questions into empty array
+function addEmployee() {      
+  return  inquirer.prompt(employeeQuestions)
             .then((employeeData) => {
             const {role, name, id, email, gitHub, school} = employeeData;
             let theEmployee;
@@ -99,7 +103,9 @@ function init() {
                 theEmployee = new Intern (name, id, email, school);
                 // ADD TO EMPTY TEAM ARRAY TO JOIN ALL INPUT DATA
                 teamData.push(theEmployee);
+                console.log(theEmployee);
             });
-}
+};
 
-init();
+init()
+    .then(addEmployee);
