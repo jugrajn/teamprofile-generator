@@ -5,6 +5,8 @@ const Manager = require('./lib/manager.js');
 const Engineer = require('./lib/engineer.js');
 const Intern = require('./lib/Intern');
 
+const generateProfilePage = require('./src/generateProfilePage.js');
+
 const teamData = [];
 
 // Manager prompt questions
@@ -69,42 +71,68 @@ const employeeQuestions = [
     {
         type: 'confirm',
         message: "Would you like to add another employee to the team?",
-        name: 'confirm',
+        name: 'confirmEmployee',
     },
 ]
 
 // Retrieve Input values for Manager Questions into empty array
 function init() {
-  return  inquirer.prompt(managerQuestions)
+    
+   inquirer.prompt(managerQuestions).then((managerData) => {
+               
 
-            .then((managerData) => {
             const {name, id, email, officeNumber } = managerData;
             const manager = new Manager (name, id, email, officeNumber);
 
             teamData.push(manager);
+            addEmployee()
             console.log(manager);
             });
 }   
 
      // Retrive Input values for Employee questions into empty array
 function addEmployee() {      
-  return  inquirer.prompt(employeeQuestions)
+   inquirer.prompt(employeeQuestions)
   
             .then((employeeData) => {
-            const {role, name, id, email, gitHub, school} = employeeData;
+             
+
+            const {role, name, id, email, gitHub, school, confirmEmployee} = employeeData;
             let theEmployee;
             
             // SET A CONDITION ON WHICH INPUT DATA SHOULD BE RETRIEVED ON BASED ON EMPLOYEE ROLE
             if (role === "Engineer") {
                 theEmployee = new Engineer (name, id, email, gitHub);
+                teamData.push(theEmployee);
+            
 
-            } else if (role === "Intern")
+            } else if (role === "Intern") {
                 theEmployee = new Intern (name, id, email, school);
                 // ADD TO EMPTY TEAM ARRAY TO JOIN ALL INPUT DATA
                 teamData.push(theEmployee);
                 console.log(theEmployee);
-            });
+
+            } 
+            
+            if (confirmEmployee) {
+               addEmployee()
+            } else {
+               const html = generateProfilePage(teamData)
+               console.log(html)
+               writeToFile(html)
+            }
+        });
 };
+// Create Function to write the actual html file
+function writeToFile(data) {
+    fs.writeFile('./dist/teamProfile.html', data, err => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Your team profile is a success!");
+        }
+    })
+}
 
 init()
-    .then(addEmployee);
+

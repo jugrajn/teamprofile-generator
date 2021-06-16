@@ -56,13 +56,34 @@ const renderIntern = (intern) => {
 };
 
 //Create function that takes all generated employee cards based on input that can be insterted into HTML file
-const createTeam = (response) => {
+const createTeam = (members) => {
+  
     let theTeam = [];
-   
+
+    for (let i = 0; i < members.length; i++) {
+        const theEmployee = members[i]
+        const role = theEmployee.getRole();
+
+        switch (role) {
+            case 'Manager':
+                theTeam.push(renderManager(theEmployee))
+                break;
+            case 'Intern':
+                theTeam.push(renderIntern(theEmployee))
+                break;
+            case 'Engineer':
+                theTeam.push(renderEngineer(theEmployee))
+                break;
+        }
+        
+    }
+   const teamEl = theTeam.join('')
+   return teamEl
 }
 
 // ---------------Create a function that renders general HTML Page---------------
-const generateTeamProfile = () => {
+const generateProfilePage = (teamEl) => {
+    console.log(teamEl)
     return `
     <!DOCTYPE html>
 <html lang="en">
@@ -107,10 +128,12 @@ const generateTeamProfile = () => {
 
         <div class="row justify-content-space-between">
         <!--INSERT TEAM CARD ELEMENTS HERE   -->
-        ${}
+        ${createTeam(teamEl)}
         </div>
 
       </div>
 </body>
 </html>`;
 };
+
+module.exports = generateProfilePage;
