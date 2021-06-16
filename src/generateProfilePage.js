@@ -55,8 +55,14 @@ const renderIntern = (intern) => {
     </div>`;
 };
 
+//Create function that takes all generated employee cards based on input that can be insterted into HTML file
+const createTeam = (response) => {
+    let theTeam = [];
+   
+}
 
 // ---------------Create a function that renders general HTML Page---------------
 const generateTeamProfile = () => {
-    return ``;
+    return `
+    `;
 };
