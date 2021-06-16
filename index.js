@@ -84,13 +84,12 @@ function init() {
             teamData.push(manager);
             console.log(manager);
             });
-    
-    addEmployee();
 }   
 
      // Retrive Input values for Employee questions into empty array
 function addEmployee() {      
   return  inquirer.prompt(employeeQuestions)
+  
             .then((employeeData) => {
             const {role, name, id, email, gitHub, school} = employeeData;
             let theEmployee;
