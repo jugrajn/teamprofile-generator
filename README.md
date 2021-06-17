@@ -7,9 +7,9 @@
 
   * Application begins with questions for the role of Manager, where user provides information on name, id, email, and office number.
 
-  * A choice is given to add a type of employee: Intern, or Engineer, where similar information if requested as well as GitHub username for the Engineer and where the employee went to School for the Intern.
+  * A choice is given to add a type of employee: Intern, or Engineer; similar information is requested as well as GitHub username for Engineer and where the employee went to school for the Intern.
 
-  * An option is given to add more employees or end the application. If no more employees are added then an HTML page is generatored displaying all the Employees with their titles and information. 
+  * An option is given to add more employees or end the application. If no more employees are added then an HTML page is generated displaying all the employees with their titles and information. 
   
   ## Table of Contents
 
@@ -46,8 +46,9 @@
   ## Screenshot
   ![Screenshot Team Profile Page](./Assets/TeamprofileGen.PNG)
 
-  ![Application Walkthrough](./Assets/teamProfileScreenRecord.mp4)
-  ![Testing Walkthrough](./Assets/TeamProfileTests.mp4)
+  * [Application Walkthrough](https://drive.google.com/file/d/1bHlg9lduNU6Ul7-YWcfevudkzJjE4IEv/view)
+  * [Testing Walkthrough](https://drive.google.com/file/d/11Gbn4nPqDHcNAPy6yQmGz3MJBlZ1204b/view)
+
 
   
 
@@ -58,6 +59,5 @@
 
   https://github.com/jugrajn
 
-  Any question? Reach me: 
-    - jugraj.nijjar@gmail.com
+  Any question? Reach me: jugraj.nijjar@gmail.com
 
